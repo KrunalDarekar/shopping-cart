@@ -1,15 +1,24 @@
 import { useMensClothing, useWomensClothing } from "../DataHooks"
+import AppBar from "../components/AppBar"
 
 export default function Home() {
 
-    const { mensData, error, loading} = useMensClothing()
-    const { womensData, werror, wloading } = useWomensClothing()
-    console.log(mensData)
-    console.log(womensData)
+    const { womensData, wError, wLoading} = useWomensClothing()
+
+    if(wLoading) {
+        return (<div>
+            loading...
+        </div>)
+    } 
+    if (wLoading) {
+        return (<div>
+            error
+        </div>)
+    }
 
     return (
         <>
-            <img src={mensData[0].image} alt=""/>
+            <img src={womensData[0].image} alt=""/>
         </>
     )
 }

@@ -3,10 +3,11 @@ import { useState } from "react"
 
 const useMensClothing = () => {
     const [mensData, setMensData] = useState(null)
-    const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [mError, setError] = useState(null)
+    const [mLoading, setLoading] = useState(true)
 
     useEffect(() => {
+        console.log("from effect")
         fetch("https://fakestoreapi.com/products/category/men's clothing")
             .then((res) => {
                 if (res.status >= 400) {
@@ -14,20 +15,24 @@ const useMensClothing = () => {
                 }
                 return res.json()
             })
-            .then((res) => setMensData(res))
+            .then((res) => {
+                console.log("log from the fetch")
+                console.log(res)
+                setMensData(res)
+            })
             .catch((error) => setError(error))
             .finally(() => setLoading(false))
 
     }, [])
 
-    return { mensData, error, loading}
+    return { mensData, mError, mLoading}
 
 }
 
 const useWomensClothing = () => {
     const [womensData, setWomensData] = useState(null)
-    const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [wError, setError] = useState(null)
+    const [wLoading, setLoading] = useState(true)
 
     useEffect(() => {
         fetch("https://fakestoreapi.com/products/category/women's clothing")
@@ -43,7 +48,7 @@ const useWomensClothing = () => {
 
     }, [])
 
-    return { womensData, error, loading}
+    return { womensData, wError, wLoading}
 
 }
 
