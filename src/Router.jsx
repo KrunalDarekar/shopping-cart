@@ -3,6 +3,7 @@ import Home from "./pages/Home"
 import Shop from "./pages/Shop"
 import ErrorPage from "./pages/ErrorPage"
 import Layout from "./pages/Layout"
+import Cart from "./pages/Cart"
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const Router = () => {
                 {
                     path: "/shop",
                     element: <Shop/>,
+                },
+                {
+                    path: "/cart",
+                    element: <Cart/>,
                 }
             ],
             errorElement: <ErrorPage />
