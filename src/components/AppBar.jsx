@@ -1,23 +1,32 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 const AppBar = () => {
 
+    const [focused, setfocused] = useState("home")
+    let homeClasses = ["text-purple-700 font-semibold", "scale-x-100"]
+    let shopClasses = ["", ""]
+    if (focused === "shop") {
+        shopClasses = homeClasses
+        homeClasses = ["", ""]
+    }
+
     return (
-        <header className="flex mx-8 my-4 justify-between">
-            <div className="font-bold text-2xl">
+        <header className="flex px-8 py-4 justify-between shadow mb-4">
+            <div className="font-bold text-xl md:text-2xl text-purple-700">
                 My Cart
             </div>
-            <div className="flex">
-                <div className="mr-4 inline-block relative group">
+            <div className="flex items-center">
+                <div onClick={() => {setfocused("home")}} className={`mr-4 inline-block relative group md:text-lg md:mr-8 ${homeClasses[0]}`} >
                     <Link to="/" className="hover-div">
                         Home
-                        <div className="absolute bottom-1 left-0 w-full h-0.5 bg-blue-500 transform scale-x-0 transition-transform origin-bottom group-hover:scale-x-100"></div>
+                        <div className={`absolute bottom-0 left-0 w-full h-0.5 bg-purple-700 transform scale-x-0 transition-transform origin-bottom group-hover:scale-x-100 ${homeClasses[1]}`}></div>
                     </Link>
                 </div>
-                <div className="mr-4 inline-block relative group">
+                <div onClick={() => {setfocused("shop")}} className={`mr-4 inline-block relative group md:text-lg md:mr-8 ${shopClasses[0]}`}>
                     <Link to="/shop" className="hover-div">
                         Shop
-                        <div className="absolute bottom-1 left-0 w-full h-0.5 bg-blue-500 transform scale-x-0 transition-transform origin-bottom group-hover:scale-x-100"></div>
+                        <div className={`absolute bottom-0 left-0 w-full h-0.5 bg-purple-700 transform scale-x-0 transition-transform origin-bottom group-hover:scale-x-100 ${shopClasses[1]}`}></div>
                     </Link>
                 </div>
                 <div>
