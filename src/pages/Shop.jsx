@@ -1,37 +1,12 @@
+import { useRecoilValue } from "recoil"
 import { useMensClothing, useWomensClothing } from "../DataHooks"
 import Loader from "../components/Loader"
 import ProductCard from "../components/ProductCard"
+import { productListSelector } from "../state/atoms/atoms"
 
 export default function Shop() {
 
-    const { womensData, wError, wLoading} = useWomensClothing()
-    const { mensData, mError, mLoading} = useMensClothing()
-
-    if( wLoading || mLoading) {
-        return (
-            <div>
-                <Loader/>
-            </div>
-        )
-    }
-
-    if( wError ) {
-        return (
-            <div>
-                {wError}
-            </div>
-        )
-    }
-
-    if( mError ) {
-        return (
-            <div>
-                {mError}
-            </div>
-        )
-    }
-
-    const allItems = mensData.concat(womensData)
+    const allItems = useRecoilValue(productListSelector)
 
     return (
         <>
