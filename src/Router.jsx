@@ -4,6 +4,7 @@ import Shop from "./pages/Shop"
 import ErrorPage from "./pages/ErrorPage"
 import Layout from "./pages/Layout"
 import Cart from "./pages/Cart"
+import Product from "./pages/Product"
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const Router = () => {
                 {
                     path: "/cart",
                     element: <Cart/>,
+                },
+                {
+                    path: "/product",
+                    element: <Product/>
                 }
             ],
             errorElement: <ErrorPage />
