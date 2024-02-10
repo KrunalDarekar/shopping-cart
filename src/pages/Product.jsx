@@ -1,4 +1,4 @@
-import { useRecoilValue } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 import { cartItemsAtom, currProductAtom } from "../state/atoms/atoms"
 import ProductCard from "../components/ProductCard"
 
@@ -8,7 +8,27 @@ const Product = () => {
     const [cartItems, setCartItems] = useRecoilState(cartItemsAtom)
 
     const handleClick = () => {
+        let inCart = false
+        cartItems.forEach( cartItem => {
+            if(item.id === cartItem.details.id) {
+                inCart = true
+            }
+        });
 
+        if(inCart) {
+            const newList = cartItems.map( (cartItem) => {
+                if(item.id === cartItem.details.id) {
+                    return { details: item, count: cartItem.count + 1}
+                } else {
+                    return cartItem
+                }
+            })
+            setCartItems(newList)
+        } else {
+            const newList = [...cartItems]
+            newList.push({ details: item, count: 1})
+            setCartItems(newList)
+        }
     }
 
     return (

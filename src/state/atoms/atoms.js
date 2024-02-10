@@ -1,5 +1,4 @@
 import { atom, selector } from "recoil";
-import { useWomensClothing } from "../../DataHooks";
 
 const womensDataAtom = atom({
     key: "womensDataAtom",
@@ -19,8 +18,20 @@ const productListSelector = selector({
     }
 })
 
+const currProductAtom = atom({
+    key: "currProductAtom",
+    default: {}
+})
+
+const cartItemsAtom = atom({
+    key: "cartItemsAtom",
+    default: []
+})
+
 export {
     womensDataAtom,
     mensDataAtom,
-    productListSelector
+    productListSelector,
+    currProductAtom,
+    cartItemsAtom
 }

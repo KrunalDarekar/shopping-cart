@@ -1,7 +1,7 @@
-const ProductCard = ({item}) => {
+const ProductCard = ({item, onClick}) => {
 
     return (
-        <div key={item.id} className="flex flex-col justify-center items-center p-2 border rounded-md shadow-xl cursor-pointer">
+        <div key={item.id} onClick={onClick} className="flex flex-col justify-center items-center p-2 border rounded-md shadow-xl cursor-pointer">
             <img src={item.image} alt={item.title} className=" inset-0 h-60 object-cover mb-2"/>
             <div className="text-lg whitespace-normal mx-2 mb-1">{item.title}</div>
             <div className="flex justify-center gap-x-4 w-full">

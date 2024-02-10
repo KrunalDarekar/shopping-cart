@@ -7,7 +7,6 @@ const useMensClothing = () => {
     const [mLoading, setLoading] = useState(true)
 
     useEffect(() => {
-        console.log("from effect")
         fetch("https://fakestoreapi.com/products/category/men's clothing")
             .then((res) => {
                 if (res.status >= 400) {
@@ -16,8 +15,6 @@ const useMensClothing = () => {
                 return res.json()
             })
             .then((res) => {
-                console.log("log from the fetch")
-                console.log(res)
                 setMensData(res)
             })
             .catch((error) => setError(error))
